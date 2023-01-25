@@ -6,11 +6,6 @@ const manifest: chrome.runtime.ManifestV3 = {
   version: packageJson.version,
   description: packageJson.description,
   options_page: "src/pages/options/index.html",
-  background: { service_worker: "src/pages/background/index.js" },
-  action: {
-    default_popup: "src/pages/popup/index.html",
-    default_icon: "icon-34.png",
-  },
   chrome_url_overrides: {
     newtab: "src/pages/newtab/index.html",
   },
@@ -36,6 +31,26 @@ const manifest: chrome.runtime.ManifestV3 = {
       matches: ["*://*/*"],
     },
   ],
+background: { service_worker: "src/pages/background/firebase.js"/*"src/pages/background/index.js"*/ },
+  permissions: [
+    "tabs",
+    "scripting",
+    "activeTab",
+    "identity",
+    "notifications"
+  ],
+  action: {
+    default_popup: "src/pages/popup/index.html",
+    default_icon: "icon-34.png",
+  },
+  oauth2: {
+    "client_id": "906602411317-jbm3mjkdlafs420lqh1kpp77vig4d3v3.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+      "https://www.googleapis.com/auth/userinfo.profile"
+    ]
+  },
+  key: "blnicbgcnbnopanppglniidcclcdhejf"
 };
 
 export default manifest;

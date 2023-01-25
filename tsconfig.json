@@ -2,7 +2,8 @@
   "compilerOptions": {
     "noEmit": true,
     "baseUrl": ".",
-    "allowJs": false,
+    "allowJs": true,
+    "outDir": "./src/build/",
     "target": "esnext",
     "module": "esnext",
     "jsx": "react-jsx",

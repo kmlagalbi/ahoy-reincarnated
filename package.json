@@ -17,8 +17,10 @@
   },
   "type": "module",
   "dependencies": {
+    "axios": "^1.2.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-google-login": "^5.2.2"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.5.0",
