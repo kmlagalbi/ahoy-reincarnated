@@ -5,7 +5,7 @@ import Popup from "@pages/popup/Popup";
 
 import Comment from "@pages/popup/Comment"
 import GoogleButton from "@pages/popup/GoogleLogin"
-import IndexPopup from "@pages/popup/IndexPopup"
+import IndexPopup from "@src/pages/popup/IndexPopup"
 
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
 
