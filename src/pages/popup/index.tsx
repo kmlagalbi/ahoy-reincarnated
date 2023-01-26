@@ -5,6 +5,7 @@ import Popup from "@pages/popup/Popup";
 
 import Comment from "@pages/popup/Comment"
 import GoogleButton from "@pages/popup/GoogleLogin"
+import IndexPopup from "@pages/popup/IndexPopup"
 
 import refreshOnUpdate from "virtual:reload-on-update-in-view";
 
@@ -19,7 +20,9 @@ async function init() {
   }
   const root = createRoot(appContainer);
 
+  root.render(<IndexPopup/>)
 
+  /*
   async function getCurrentTab() {
     let queryOptions = { active: true, lastFocusedWindow: true };
     let [tab] = await chrome.tabs.query(queryOptions);
@@ -58,6 +61,8 @@ async function init() {
   
     root.render(<Comment commentData={state}/>);
   }
+  */
+
 
 }
 

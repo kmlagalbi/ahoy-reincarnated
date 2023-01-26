@@ -31,7 +31,7 @@ const manifest: chrome.runtime.ManifestV3 = {
       matches: ["*://*/*"],
     },
   ],
-background: { service_worker: "src/pages/background/firebase.js"/*"src/pages/background/index.js"*/ },
+background: { service_worker: /*"src/pages/background/firebase.js"*/"src/pages/background/index.js" },
   permissions: [
     "tabs",
     "scripting",
