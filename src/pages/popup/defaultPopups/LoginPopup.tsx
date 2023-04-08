@@ -65,7 +65,7 @@ function IndexPopup() {
       // Whenever the auth changes, we make sure we're no longer loading
       // and set the user! On login, this will populate with a new user
       // on logout, this will make user null
-      onAuthStateChanged(auth, (user) => {
+      onAuthStateChanged(auth, async (user) => {
         setIsLoading(false)
         setUser(user)
 
@@ -73,7 +73,7 @@ function IndexPopup() {
         setLocalStorage("userInfo", {
           isLogin: !!user,
           uid: !!user ? auth.currentUser.uid : "",
-          jwt: !!user ? auth.currentUser.getIdToken : ""
+          jwt: !!user ? await auth.currentUser.getIdToken() : ""
         })
         if(previous != !!user) location.reload()
 
