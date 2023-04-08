@@ -5,17 +5,21 @@ import {
     onAuthStateChanged,
     setPersistence,
     signInWithCredential
-  } from "firebase/auth"
+} from "firebase/auth"
   
-  import { useEffect, useState } from "react"
-  
-  // This is the firebase.ts file we created a few
-  // steps ago when we received our config!
-  import { auth } from "../background/firebase"
-  
-  // We'll need to specify that we want Firebase to store
-  // our credentials in localStorage rather than in-memory
-  setPersistence(auth, browserLocalPersistence)
+import { useEffect, useState } from "react"
+
+// This is the firebase.ts file we created a few
+// steps ago when we received our config!
+import { auth } from "@src/pages/background/firebase"
+
+import { getLocalStorage, setLocalStorage } from "../../utils/localstorage"
+
+
+
+// We'll need to specify that we want Firebase to store
+// our credentials in localStorage rather than in-memory
+setPersistence(auth, browserLocalPersistence)
 
 function IndexPopup() {
     const [isLoading, setIsLoading] = useState(false)
@@ -48,6 +52,7 @@ function IndexPopup() {
             // since we're keeping track of the user object with
             // onAuthStateChanged
             await signInWithCredential(auth, credential)
+
           } catch (e) {
             console.error("Could not log in. ", e)
           }
@@ -63,6 +68,17 @@ function IndexPopup() {
       onAuthStateChanged(auth, (user) => {
         setIsLoading(false)
         setUser(user)
+
+        let { isLogin: previous } = getLocalStorage("userInfo")
+
+        setLocalStorage("userInfo", {
+          isLogin: !!user,
+          uid: "",
+          jwt: ""
+        })
+
+        if(previous != !!user) location.reload()
+
       })
     }, [])
   
