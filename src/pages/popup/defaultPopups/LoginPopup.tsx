@@ -70,13 +70,11 @@ function IndexPopup() {
         setUser(user)
 
         let { isLogin: previous } = getLocalStorage("userInfo")
-
         setLocalStorage("userInfo", {
           isLogin: !!user,
-          uid: "",
-          jwt: ""
+          uid: !!user ? auth.currentUser.uid : "",
+          jwt: !!user ? auth.currentUser.getIdToken : ""
         })
-
         if(previous != !!user) location.reload()
 
       })

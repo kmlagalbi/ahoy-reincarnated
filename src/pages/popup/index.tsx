@@ -37,7 +37,6 @@ async function init() {
   console.log(userInfo)
 
   if(!userInfo?.isLogin) {
-    console.log("def")
     loadGoogleLogin(root)
   } else {
     loadMainPopup(root) 
